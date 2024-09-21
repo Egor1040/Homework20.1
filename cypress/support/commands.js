@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('createExpense', (carId, expenseData) => {
+    return cy.request({
+      method: 'POST',
+      url: 'https://qauto.forstudy.space/api/expenses',
+      body: {
+        carId,
+        ...expenseData
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  });
+  
